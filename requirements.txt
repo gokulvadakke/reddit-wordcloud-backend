@@ -4,3 +4,4 @@ praw
 wordcloud
 python-multipart
 aiofiles
+asyncpraw
