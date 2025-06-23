@@ -45,10 +45,16 @@ async def analyze(req: QueryRequest):
 
         # 🔸 Define custom stopwords
         custom_stopwords = set(STOPWORDS)
-        custom_stopwords.add(query)  # Remove the search term itself
+        custom_stopwords.add(query.lower())  # Remove the search term itself
 
         # Add any extra words you want to filter out
-        blacklist = {"https", "http", "www", "com", "imgur", "like", "get"}
+        blacklist = {
+            "https", "http", "www", "com", "imgur", "like", "get", "please",
+            "reddit", "redditt", "subreddit", "subredditt", "also", "thing", "things",
+            "know", "just", "really", "one", "would", "could", "say", "see", "much",
+            "many", "make", "made", "well", "yes", "no", "lot", "even", "still"
+        }
+
         custom_stopwords.update(blacklist)
 
         # 🔸 Create the word cloud
